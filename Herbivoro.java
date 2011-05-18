@@ -16,5 +16,9 @@ public class Herbivoro extends Animal
 	{
 		return this.rand_mov;
 	};
+	public void setImg()
+	{
+		super.setImg("cow.png");
+	}
 }
 

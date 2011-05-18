@@ -10,4 +10,8 @@ public class Carnivoro extends Animal
   	{
 		return this.ataque;
   	};
+	public void setImg()
+	{
+		super.setImg("lion.png");
+	}
 }

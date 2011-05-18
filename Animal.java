@@ -1,6 +1,7 @@
-public class Animal
+abstract public class Animal
 {
 	String nombre;
+	String img;
   	int vida;
   	int nro_comidas;
   	public Animal(String nombre, int vida)
@@ -13,5 +14,12 @@ public class Animal
 	{
 		return nombre;
 	};
+	public void setImg(String imgName)
+	{
+		this.img = imgName;
+	}
+	public String getImg()
+	{
+		return img;
+	}
 }
-
