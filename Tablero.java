@@ -1,11 +1,12 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.awt.event.*;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 
-public class Tablero extends JPanel
+public class Tablero extends JPanel implements KeyListener
 {
 	Cell[][] matrix;
 	JFrame frame = new JFrame("Juego");
@@ -18,6 +19,8 @@ public class Tablero extends JPanel
 			for (j=0;j<9;j++)
 				matrix[i][j] = new Cell(i,j);
 		matrix[4][4].setImage("lion.png");
+		frame.addKeyListener(this);
+		frame.setFocusable(true);
 	}
 	public void draw() 
 	{	
@@ -57,5 +60,32 @@ public class Tablero extends JPanel
 		super.paintComponent(g); 
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(buf,0, 0, null);
+	};
+	public void keyTyped(KeyEvent e)
+	{
+		//System.out.println("KEY TYPED: ");
+	};
+	public void keyPressed(KeyEvent e)
+	{
+		//37=L 38=U 39=R 40=D
+		switch(e.getKeyCode())
+		{
+			case 37:
+				//apply left;
+				break;
+			case 38:
+				//apply up;
+				break;
+			case 39:
+				//apply right;
+				break;
+			case 40:
+				//apply down;
+				break;
+		}
+	};
+	public void keyReleased(KeyEvent e)
+	{
+		//System.out.println("KEY RELEASED: ");
 	};
 }
