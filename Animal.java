@@ -1,7 +1,7 @@
-abstract public class Animal
+public class Animal
 {
 	String nombre;
-	String img;
+	public String img;
   	int vida;
   	int nro_comidas;
   	public Animal(String nombre, int vida)
@@ -12,7 +12,7 @@ abstract public class Animal
 	};
 	public String getNombre()
 	{
-		return nombre;
+		return this.nombre;
 	};
 	public void setImg(String imgName)
 	{
@@ -20,6 +20,6 @@ abstract public class Animal
 	}
 	public String getImg()
 	{
-		return img;
+		return this.img;
 	}
 }

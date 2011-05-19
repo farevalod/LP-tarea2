@@ -22,7 +22,7 @@ public class Juego
 			listaHerbivoros.add(new Herbivoro("a",1,1,1));
 		line = is.readLine();
 		line = is.readLine();
-		for (i=0;i<Integer.parseInt(line);i++) 
+		for (i=0;i<Integer.parseInt(line);i++)
 			listaPlantas.add(new Planta("a"));
 		line = is.readLine();
 		int lim = Integer.parseInt(is.readLine());

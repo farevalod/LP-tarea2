@@ -3,6 +3,7 @@ public class Herbivoro extends Animal
 	public Herbivoro(String nombre, int vida, int defensa, int rand_mov)
   	{
 		super(nombre, vida);
+		this.setImg("cow.png");
 		this.defensa = defensa;
 		this.rand_mov = rand_mov;
 	};
@@ -16,9 +17,5 @@ public class Herbivoro extends Animal
 	{
 		return this.rand_mov;
 	};
-	public void setImg()
-	{
-		super.setImg("cow.png");
-	}
 }
 

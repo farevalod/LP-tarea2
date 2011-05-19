@@ -31,15 +31,24 @@ public class Cell extends JPanel
 	};
 	public void makeCell()
 	{
-		int pC = 98;int pH = 97; int pP = 95;
+		int pC = 98; int pH = 97; int pP = 95;
 		Random roll = new Random();
 		int r = roll.nextInt(100);
 		if((r > pC) && (!Juego.listaCarnivoros.isEmpty()))
+		{
 			this.a = Juego.listaCarnivoros.remove(0);
+			return;
+		};
 		if((r > pH) && (!Juego.listaHerbivoros.isEmpty()))
+		{
 			this.a = Juego.listaHerbivoros.remove(0);
+			return;
+		}
 		if((r > pP) && (!Juego.listaPlantas.isEmpty()))
+		{
 			this.a = Juego.listaPlantas.remove(0);
+			return;
+		}
 		else
 			this.a = null;
 	};
