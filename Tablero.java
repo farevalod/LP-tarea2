@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 
 public class Tablero extends JPanel implements KeyListener
 {
-	Cell[][] matrix;
+	static Cell[][] matrix;
 	JFrame frame = new JFrame("Juego");
 	BufferedImage buf = new BufferedImage(225, 225, BufferedImage.TYPE_INT_RGB);
 
@@ -46,15 +46,17 @@ public class Tablero extends JPanel implements KeyListener
 					if(matrix[i][j].a != null)
 					{
 						matrix[i][j].setImage(matrix[i][j].a.getImg());
-						//matrix[i][j].a.ai();
+						matrix[i][j].chaseAI();
 					}
 					else
 					{
 						matrix[i][j].setImage("grass.png");
 					}
-			    g.drawImage(matrix[i][j].getImage(), matrix[i][j]._x, matrix[i][j]._y, null);
 			};
 		};
+		for (i=0;i<9;i++ )
+			for (j=0;j<9;j++) 
+			    g.drawImage(matrix[i][j].getImage(), matrix[i][j]._x, matrix[i][j]._y, null);
 	};
 
 	public void paintComponent(Graphics g) 
