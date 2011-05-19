@@ -34,14 +34,13 @@ public class Cell extends JPanel
 		int pC = 98;int pH = 97; int pP = 95;
 		Random roll = new Random();
 		int r = roll.nextInt(100);
-		if(r > pC)
+		if((r > pC) && (!Juego.listaCarnivoros.isEmpty()))
 			this.a = Juego.listaCarnivoros.remove(0);
-		if(r > pH)
+		if((r > pH) && (!Juego.listaHerbivoros.isEmpty()))
 			this.a = Juego.listaHerbivoros.remove(0);
-		if(r > pP)
+		if((r > pP) && (!Juego.listaPlantas.isEmpty()))
 			this.a = Juego.listaPlantas.remove(0);
 		else
 			this.a = null;
-		System.out.println("r: "+r);
 	};
 }

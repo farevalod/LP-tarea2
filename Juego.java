@@ -15,7 +15,7 @@ public class Juego
 		line = is.readLine();
 		line = is.readLine();
 		for (i=0;i<Integer.parseInt(line);i++) 
-		listaCarnivoros.add(new Carnivoro("a",1,1));
+			listaCarnivoros.add(new Carnivoro("a",1,1));
 		line = is.readLine();
 		line = is.readLine();
 		for (i=0;i<Integer.parseInt(line);i++) 

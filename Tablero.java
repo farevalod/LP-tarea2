@@ -90,25 +90,18 @@ public class Tablero extends JPanel implements KeyListener
 				applyLeft();
 				break;
 			case 38:
-				//apply up;
+				applyUp();
 				break;
 			case 39:
-				//apply right;
+				applyRight();
 				break;
 			case 40:
-				//apply down;
+				applyDown();
 				break;
 		}
 		this.Iterate();
 		this.draw();
 		repaint();
-		System.out.println("Iterating");
-		if(matrix[4][3].a != null)
-		{
-			System.out.println(matrix[4][3].a.getNombre());
-			System.out.println(matrix[4][3].a.getImg());
-		}
-		System.out.println(matrix[4][3].getImage());
 	};
 
 	public void keyReleased(KeyEvent e)
@@ -121,7 +114,7 @@ public class Tablero extends JPanel implements KeyListener
 		int i;int j;
 		if(matrix[3][4].a == null)
 		{
-			for (i=0;i<9;i++)
+			for(i=0;i<9;i++)
 				matrix[8][i].a = null;
 			for(i=0;i<9;i++)
 			{
@@ -144,6 +137,73 @@ public class Tablero extends JPanel implements KeyListener
 				if(matrix[3][4].a instanceof Planta)
 				;//eat
 			}
+		}
+	};
+	public void applyRight()
+	{
+		int i; int j;
+		if(matrix[5][4].a == null)
+		{
+			for(i=0;i<9;i++)
+				matrix[0][i].a = null;
+			for(i=0;i<9;i++)
+			{
+				for(j=0;j<8;j++)
+				{
+					if((i != 4) || (j !=4)) //El animal del jugador no se mueve.
+						matrix[j][i].a = matrix[j+1][i].a;
+				}
+				matrix[8][i].makeCell();
+			}
+		}
+		else//Hay algo en la celda
+		{
+			//if(Jugador.a
+				//... no usar instanceof!
+		}
+	};
+	public void applyUp()
+	{
+		int i; int j;
+		if(matrix[4][3].a == null)
+		{
+			for (i=0;i<9;i++)
+				matrix[i][8].a = null;
+			for (j=0;j<9;j++)
+			{
+				for (i=8;i>0;i--)
+				{
+					if((i != 4) || (j != 4)) //Animal del jugador (4,4)
+						matrix[j][i].a = matrix[j][i-1].a;
+				}
+				matrix[j][0].makeCell();
+			}
+		}
+		else//Hay algo en la celda
+		{
+
+		}
+	};
+	public void applyDown()
+	{
+		int i; int j;
+		if(matrix[4][5].a == null)
+		{
+			for (i=0;i<9;i++)
+				matrix[i][0].a = null;
+			for(j=0;j<9;j++)
+			{
+				for (i=0;i<8;i++)
+				{
+					if((i != 4) || (j != 4)) //Jugador (4,4)
+						matrix[j][i].a = matrix[j][i+1].a;
+				}
+				matrix[j][8].makeCell();
+			}
+		}
+		else//Hay algo en la celda
+		{
+
 		}
 	};
 }
