@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 public class Cell extends JPanel
 {
 	int _x; int _y;
+	int cx; int cy;
 	Animal a = null;
 	Image image;
 
@@ -15,6 +16,8 @@ public class Cell extends JPanel
 	{
 		_x = x*25;
 		_y = y*25;
+		cx = x;
+		cy = y;
 	};
 
 	public void setImage(String img)
@@ -38,13 +41,16 @@ public class Cell extends JPanel
 	{
 		if(this.a.toggle() == 0)
 		{
-			if(Tablero.matrix[(_x/25)+dx][(_y/25)+dy].a == null)
+			if(((cx+dx) != 4) || ((cx+dy) != 4))
 			{
-				Tablero.matrix[(_x/25)+dx][(_y/25)+dy].a = this.a;
-				Tablero.matrix[(_x/25)+dx][(_y/25)+dy].setImage(this.a.getImg());
-				this.a = null;
-				this.setImage("grass.png");
-				repaint();
+				if(Tablero.matrix[cx+dx][cy+dy].a == null)
+				{
+					Tablero.matrix[cx+dx][cy+dy].a = this.a;
+					Tablero.matrix[cx+dx][cy+dy].setImage(this.a.getImg());
+					this.a = null;
+					this.setImage("grass.png");
+					repaint();
+				};
 			};
 		}
 		else
@@ -53,26 +59,40 @@ public class Cell extends JPanel
 	
 	public void chaseAI()
 	{
-		if(this.a instanceof Carnivoro)
-		{
-			if(((_x/25) < 3) && ((_y/25) < 3))
-				switchCell(1,1);
-			else if(((_x/25) > 5) && ((_y/25) < 3))
-				switchCell(-1,1);
-			else if(((_x/25) < 3) && ((_y/25) > 5))
-				switchCell(1,-1);
-			else if(((_x/25) > 5) && ((_y/25) > 5))
-				switchCell(-1,-1);
-			else if((((_x/25) == 3)||((_x/25) == 4)||((_x/25) == 5)) && ((_y/25) < 3))
-				switchCell(0,1);
-			else if((((_x/25) == 3)||((_x/25) == 4)||((_x/25) == 5)) && ((_y/25) > 5))
-				switchCell(0,-1);
-			else if(((_x/25) < 3) && (((_y/25) == 3)||((_y/25) == 4)||((_y/25) == 5)))
-				switchCell(1,0);
-			else if(((_x/25) < 5) && (((_y/25) == 3)||((_y/25) == 4)||((_y/25) == 5)))
-				switchCell(-1,0);
-		}
+		if((cx < 3) && (cy < 3))
+			switchCell(1,1);
+		else if((cx > 5) && (cy < 3))
+			switchCell(-1,1);
+		else if((cx < 3) && (cy > 5))
+			switchCell(1,-1);
+		else if((cx > 5) && (cy > 5))
+			switchCell(-1,-1);
+		else if(((cx == 3)||(cx == 4)||(cx == 5)) && (cy < 3))
+			switchCell(0,1);
+		else if(((cx == 3)||(cx == 4)||(cx == 5)) && (cy > 5))
+			switchCell(0,-1);
+		else if((cx < 3) && ((cy == 3)||(cy == 4)||(cy == 5)))
+			switchCell(1,0);
+		else if((cx < 5) && ((cy == 3)||(cy == 4)||(cy == 5)))
+			switchCell(-1,0);
 	}
+	public void fleeAI()
+	{
+		Random roll = new Random();
+		int mov = 1;
+		if(roll.nextInt(100) > 65)
+		{
+			mov = 2;
+		};
+		if(this.cx == 3)
+			switchCell(-mov,0);
+		if(this.cx == 5)
+			switchCell(mov,0);
+		if(this.cy == 3)
+			switchCell(0,-mov);
+		if(this.cy == 5)
+			switchCell(0,mov);
+	};
 	public void makeCell()
 	{
 		int pC = 98; int pH = 97; int pP = 95;

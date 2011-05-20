@@ -46,7 +46,11 @@ public class Tablero extends JPanel implements KeyListener
 					if(matrix[i][j].a != null)
 					{
 						matrix[i][j].setImage(matrix[i][j].a.getImg());
-						matrix[i][j].chaseAI();
+						if(matrix[i][j].a instanceof Carnivoro) 
+							matrix[i][j].chaseAI();
+						else if(matrix[i][j].a instanceof Herbivoro)
+							if(((i == 4) && (j == 5))||((i == 4) && (j == 3))||((i == 3) && (j == 4))||((i == 5) && (j == 4)))
+								matrix[i][j].fleeAI();
 					}
 					else
 					{
